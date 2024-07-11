@@ -3,20 +3,20 @@
 
 namespace asst
 {
-    class RoguelikeControlTaskPlugin : public AbstractRoguelikeTaskPlugin
-    {
-    public:
-        using AbstractRoguelikeTaskPlugin::AbstractRoguelikeTaskPlugin;
-        virtual ~RoguelikeControlTaskPlugin() override = default;
+class RoguelikeControlTaskPlugin : public AbstractRoguelikeTaskPlugin
+{
+public:
+    using AbstractRoguelikeTaskPlugin::AbstractRoguelikeTaskPlugin;
+    virtual ~RoguelikeControlTaskPlugin() override = default;
 
-    public:
-        virtual bool verify(AsstMsg msg, const json::value& details) const override;
+public:
+    virtual bool verify(AsstMsg msg, const json::value& details) const override;
 
-    protected:
-        virtual bool _run() override;
-        void exit_then_stop();
+protected:
+    virtual bool _run() override;
+    void exit_then_stop();
 
-    private:
-        mutable bool m_need_exit_then_stop = false;
-    };
+private:
+    mutable bool m_need_exit_then_stop = false;
+};
 }

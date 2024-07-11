@@ -74,8 +74,15 @@ std::vector<Matcher::RawResult> Matcher::preproc_and_match(const cv::Mat& image,
         }
 
         if (templ.cols > image.cols || templ.rows > image.rows) {
-            Log.error("templ size is too large", templ_name, "image size:", image.cols, image.rows,
-                      "templ size:", templ.cols, templ.rows);
+            Log.error(
+                "templ size is too large",
+                templ_name,
+                "image size:",
+                image.cols,
+                image.rows,
+                "templ size:",
+                templ.cols,
+                templ.rows);
             return {};
         }
 

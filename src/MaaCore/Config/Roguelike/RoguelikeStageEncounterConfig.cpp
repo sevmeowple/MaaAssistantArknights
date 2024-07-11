@@ -42,8 +42,7 @@ bool asst::RoguelikeStageEncounterConfig::parse(const json::value& json)
                         auto name = requirement_json.get("name", "");
                         if (name == "Vision") {
                             choice.vision.value = requirement_json.get("value", "");
-                            choice.vision.type =
-                                parse_comparison_type(requirement_json.get("type", ""));
+                            choice.vision.type = parse_comparison_type(requirement_json.get("type", ""));
                         }
                         else if (name == "Relic") {
                             // not supported

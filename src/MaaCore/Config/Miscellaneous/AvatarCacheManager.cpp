@@ -44,8 +44,11 @@ const asst::AvatarCacheManager::AvatarsMap& asst::AvatarCacheManager::get_avatar
     return m_avatars[role];
 }
 
-void asst::AvatarCacheManager::set_avatar(const std::string& name, battle::Role role, const cv::Mat& avatar,
-                                          bool overlay)
+void asst::AvatarCacheManager::set_avatar(
+    const std::string& name,
+    battle::Role role,
+    const cv::Mat& avatar,
+    bool overlay)
 {
     LogTraceFunction;
     Log.info(__FUNCTION__, name, ", overlay:", overlay);
@@ -84,7 +87,6 @@ void asst::AvatarCacheManager::_load(LoadItem waiting_to_load)
 
     for (const auto& [role, name_and_paths] : waiting_to_load) {
         for (const auto& [name, filepath] : name_and_paths) {
-
 #ifdef ASST_DEBUG
             Log.trace(__FUNCTION__, name, filepath.lexically_relative(UserDir.get()));
 #endif

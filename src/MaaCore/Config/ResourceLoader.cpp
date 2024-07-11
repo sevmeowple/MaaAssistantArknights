@@ -15,9 +15,9 @@
 #include "Miscellaneous/StageDropsConfig.h"
 #include "Miscellaneous/TilePack.h"
 #include "OnnxSessions.h"
+#include "Roguelike/RoguelikeCollapsalParadigmConfig.h"
 #include "Roguelike/RoguelikeCopilotConfig.h"
 #include "Roguelike/RoguelikeFoldartalConfig.h"
-#include "Roguelike/RoguelikeCollapsalParadigmConfig.h"
 #include "Roguelike/RoguelikeRecruitConfig.h"
 #include "Roguelike/RoguelikeShoppingConfig.h"
 #include "Roguelike/RoguelikeStageEncounterConfig.h"
@@ -171,22 +171,12 @@ bool asst::ResourceLoader::load(const std::filesystem::path& path)
     LoadResourceAndCheckRet(RoguelikeCopilotConfig, "roguelike"_p / "Mizuki"_p / "autopilot"_p);
     LoadResourceAndCheckRet(RoguelikeCopilotConfig, "roguelike"_p / "Sami"_p / "autopilot"_p);
 
-    LoadResourceAndCheckRet(
-        RoguelikeRecruitConfig,
-        "roguelike"_p / "Phantom"_p / "recruitment.json"_p);
-    LoadResourceAndCheckRet(
-        RoguelikeRecruitConfig,
-        "roguelike"_p / "Mizuki"_p / "recruitment.json"_p);
-    LoadResourceAndCheckRet(
-        RoguelikeRecruitConfig,
-        "roguelike"_p / "Sami"_p / "recruitment.json"_p);
+    LoadResourceAndCheckRet(RoguelikeRecruitConfig, "roguelike"_p / "Phantom"_p / "recruitment.json"_p);
+    LoadResourceAndCheckRet(RoguelikeRecruitConfig, "roguelike"_p / "Mizuki"_p / "recruitment.json"_p);
+    LoadResourceAndCheckRet(RoguelikeRecruitConfig, "roguelike"_p / "Sami"_p / "recruitment.json"_p);
 
-    LoadResourceAndCheckRet(
-        RoguelikeShoppingConfig,
-        "roguelike"_p / "Phantom"_p / "shopping.json"_p);
-    LoadResourceAndCheckRet(
-        RoguelikeShoppingConfig,
-        "roguelike"_p / "Mizuki"_p / "shopping.json"_p);
+    LoadResourceAndCheckRet(RoguelikeShoppingConfig, "roguelike"_p / "Phantom"_p / "shopping.json"_p);
+    LoadResourceAndCheckRet(RoguelikeShoppingConfig, "roguelike"_p / "Mizuki"_p / "shopping.json"_p);
     LoadResourceAndCheckRet(RoguelikeShoppingConfig, "roguelike"_p / "Sami"_p / "shopping.json"_p);
 
     LoadResourceAndCheckRet(
@@ -195,29 +185,21 @@ bool asst::ResourceLoader::load(const std::filesystem::path& path)
     LoadResourceAndCheckRet(
         RoguelikeStageEncounterConfig,
         "roguelike"_p / "Mizuki"_p / "encounter"_p / "default.json"_p);
-    LoadResourceAndCheckRet(
-        RoguelikeStageEncounterConfig,
-        "roguelike"_p / "Sami"_p / "encounter"_p / "default.json"_p);
+    LoadResourceAndCheckRet(RoguelikeStageEncounterConfig, "roguelike"_p / "Sami"_p / "encounter"_p / "default.json"_p);
     LoadResourceAndCheckRet(
         RoguelikeStageEncounterConfig,
         "roguelike"_p / "Phantom"_p / "encounter"_p / "deposit.json"_p);
     LoadResourceAndCheckRet(
         RoguelikeStageEncounterConfig,
         "roguelike"_p / "Mizuki"_p / "encounter"_p / "deposit.json"_p);
-    LoadResourceAndCheckRet(
-        RoguelikeStageEncounterConfig,
-        "roguelike"_p / "Sami"_p / "encounter"_p / "deposit.json"_p);
+    LoadResourceAndCheckRet(RoguelikeStageEncounterConfig, "roguelike"_p / "Sami"_p / "encounter"_p / "deposit.json"_p);
     LoadResourceAndCheckRet(
         RoguelikeStageEncounterConfig,
         "roguelike"_p / "Sami"_p / "encounter"_p / "collapse.json"_p);
 
-    LoadResourceAndCheckRet(
-        RoguelikeFoldartalConfig,
-        "roguelike"_p / "Sami"_p / "foldartal.json"_p);
+    LoadResourceAndCheckRet(RoguelikeFoldartalConfig, "roguelike"_p / "Sami"_p / "foldartal.json"_p);
 
-    LoadResourceAndCheckRet(
-        RoguelikeCollapsalParadigmConfig,
-        "roguelike"_p / "Sami"_p / "collapsal_paradigms.json"_p);
+    LoadResourceAndCheckRet(RoguelikeCollapsalParadigmConfig, "roguelike"_p / "Sami"_p / "collapsal_paradigms.json"_p);
 
 #undef LoadTemplByConfigAndCheckRet
 #undef LoadResourceAndCheckRet
