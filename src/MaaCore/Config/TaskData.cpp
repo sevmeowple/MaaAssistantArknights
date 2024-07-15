@@ -419,6 +419,13 @@ asst::TaskPtr asst::TaskData::generate_task_info(std::string_view name)
 #undef ASST_TASKDATA_GET_VALUE_OR_LAZY
 
 #ifdef ASST_DEBUG
+    if (!json.contains("roi") && base == default_task_info_ptr
+        && algorithm != asst::AlgorithmType::JustReturn && !task->next.empty()
+        && (algorithm != asst::AlgorithmType::MatchTemplate
+            || std::dynamic_pointer_cast<const MatchTaskInfo>(task)->templ_names
+                   != std::vector<std::string> { "empty.png" })) {
+        Log.warn("Task", name, "has implicit fullscreen roi.");
+    }
     // Debug 模式下检查 roi 是否超出边界
     if (auto [x, y, w, h] = task->roi; x + w > WindowWidthDefault || y + h > WindowHeightDefault) {
         Log.warn(name, "roi is out of bounds");
