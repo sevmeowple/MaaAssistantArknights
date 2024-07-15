@@ -15657,7 +15657,7 @@
     },
     "Sami@Roguelike@StageBoskyPassageAI6": {
         "templThreshold": 0.9,
-        "baseTask": "Roguelike@Stage",
+        "baseTask": "Sami@Roguelike@Stage",
         "next": [
             "Sami@Roguelike@StageBoskyPassageEnter",
             "Sami@Roguelike@Stages#next"
@@ -15676,7 +15676,7 @@
     },
     "Sami@Roguelike@StageCombatDpsAI6": {
         "templThreshold": 0.95,
-        "baseTask": "Roguelike@Stage",
+        "baseTask": "Sami@Roguelike@Stage",
         "next": [
             "Sami@Roguelike@StageCombatDpsEnter",
             "Sami@Roguelike@StageEmergencyDpsEnter",
@@ -15706,7 +15706,7 @@
     },
     "Sami@Roguelike@StageEmergencyDpsAI6": {
         "templThreshold": 0.95,
-        "baseTask": "Roguelike@Stage",
+        "baseTask": "Sami@Roguelike@Stage",
         "next": [
             "Sami@Roguelike@StageEmergencyDpsEnter",
             "Sami@Roguelike@StageCombatDpsEnter",
@@ -15736,7 +15736,7 @@
     },
     "Sami@Roguelike@StageEncounterAI6": {
         "templThreshold": 0.96,
-        "baseTask": "Roguelike@Stage",
+        "baseTask": "Sami@Roguelike@Stage",
         "next": [
             "Sami@Roguelike@StageEncounterEnter",
             "Sami@Roguelike@Stages#next"
