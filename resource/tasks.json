@@ -15632,6 +15632,7 @@
         ]
     },
     "Sami@Roguelike@StageBoonsAI6": {
+        "baseTask": "Sami@Roguelike@Stage",
         "templThreshold": 0.95,
         "next": [
             "Sami@Roguelike@StageBoonsEnter",
