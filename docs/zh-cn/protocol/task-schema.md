@@ -111,6 +111,9 @@ icon: material-symbols:task
                                             // 不填写时默认为 Ccoeff
                                             //      - Ccoeff:       对应 cv::TM_CCOEFF_NORMED
                                             //      - CcoeffHSV:    转换为 HSV 颜色空间后再进行 CCOEFF
+                                            //      - RGBCount:     统计待匹配区域处于 maskRange 内的像素个数，
+                                            //                      个数超过模板图片的对应像素个数时结果为 1，否则为二者比值。
+                                            //      - HSVCount:     类似 RGBCount
 
         /* 以下字段仅当 algorithm 为 OcrDetect 时有效 */
 
