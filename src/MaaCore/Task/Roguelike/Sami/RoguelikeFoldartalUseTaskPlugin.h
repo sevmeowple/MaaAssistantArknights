@@ -43,8 +43,5 @@ namespace asst
         void slowly_swipe(bool direction, int swipe_dist = 200) const;
         // 节点类型
         mutable std::string m_stage;
-        
-        bool m_plugin_gained;
-        std::shared_ptr<RoguelikeCollapsalParadigmTaskPlugin> m_clp_pd_plugin;
     };
 }

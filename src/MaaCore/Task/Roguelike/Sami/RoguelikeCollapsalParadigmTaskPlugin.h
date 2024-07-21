@@ -24,8 +24,8 @@ namespace asst
 
     public:
         virtual bool verify(AsstMsg msg, const json::value& details) const override;
-
-        bool check_collapsal_paradigm_banner();
+        std::optional<json::value>
+            response_to_event(RoguelikeEvent event, const json::value& detail) override;
 
     protected:
         virtual bool _run() override;
@@ -56,6 +56,7 @@ namespace asst
 
         bool new_zone() const;
 
+        bool check_collapsal_paradigm_banner();
         bool check_collapsal_paradigm_panel();
 
         void toggle_collapsal_status_panel();
