@@ -164,8 +164,20 @@ std::vector<Matcher::RawResult> Matcher::preproc_and_match(const cv::Mat& image,
             cv::Mat zero = cv::Mat::zeros(templ_active.size(), CV_8U);
             cv::threshold(image_active, image_active, 1, 1, cv::THRESH_BINARY);
             // 把 SQDIFF 当 count 用，计算 image_active 在 templ_active 形状内的像素数量
-            cv::matchTemplate(image_active, zero, matched, cv::TM_SQDIFF, templ_active);
-            cv::divide(matched, cv::countNonZero(templ_active), matched);
+            cv::Mat recall, precision;
+            cv::Mat tp, fp;
+            int tp_fn = cv::countNonZero(templ_active);
+            cv::matchTemplate(image_active, zero, tp, cv::TM_SQDIFF, templ_active);
+            tp.convertTo(tp, CV_32S);
+            cv::divide(tp, tp_fn, recall, 1, CV_32F);
+            cv::Mat templ_inactive;
+            cv::bitwise_not(templ_active, templ_inactive);
+            cv::matchTemplate(image_active, zero, fp, cv::TM_SQDIFF, templ_inactive);
+            fp.convertTo(fp, CV_32S);
+            cv::Mat tp_fp;
+            cv::add(tp, fp, tp_fp);
+            cv::divide(tp, tp_fp, precision, 1, CV_32F);
+            cv::divide(2 * recall.mul(precision), recall + precision, matched); // matched = f1 score
         }
         results.emplace_back(RawResult { .matched = matched, .templ = templ, .templ_name = templ_name });
     }
