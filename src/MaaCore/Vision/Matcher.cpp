@@ -96,7 +96,7 @@ std::vector<Matcher::RawResult> Matcher::preproc_and_match(const cv::Mat& image,
         cv::Mat matched;
         cv::Mat image_for_match;
         cv::Mat templ_for_match;
-        if (method == MatchMethod::CcoeffHSV) {
+        if (method == MatchMethod::CcoeffHSV || method == MatchMethod::HSVCount) {
             cv::cvtColor(image, image_for_match, cv::COLOR_BGR2HSV);
             cv::cvtColor(templ, templ_for_match, cv::COLOR_BGR2HSV);
         }
@@ -151,6 +151,21 @@ std::vector<Matcher::RawResult> Matcher::preproc_and_match(const cv::Mat& image,
                 }
                 cv::matchTemplate(image_for_match, templ_for_match, matched, match_algorithm, mask_opt.value());
             }
+        }
+        else if (method == MatchMethod::RGBCount || method == MatchMethod::HSVCount) {
+            // 待匹配图像与模板中指定颜色的像素数量比值，越接近1越相似
+            auto templ_active_opt = calc_mask(templ_for_match, false);
+            auto image_active_opt = calc_mask(image_for_match, false);
+            if (!image_active_opt || !templ_active_opt) [[unlikely]] {
+                return {};
+            }
+            const auto& templ_active = templ_active_opt.value();
+            const auto& image_active = image_active_opt.value();
+            cv::Mat zero = cv::Mat::zeros(templ_active.size(), CV_8U);
+            cv::threshold(image_active, image_active, 1, 1, cv::THRESH_BINARY);
+            // 把 SQDIFF 当 count 用，计算 image_active 在 templ_active 形状内的像素数量
+            cv::matchTemplate(image_active, zero, matched, cv::TM_SQDIFF, templ_active);
+            cv::divide(matched, cv::countNonZero(templ_active), matched);
         }
         results.emplace_back(RawResult { .matched = matched, .templ = templ, .templ_name = templ_name });
     }
